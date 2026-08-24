@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Guardian</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>🌱 Garden Guardian </h1>
+    <div id="playerinfo"> Coins: <span id="coins">0</span></div>
+    <div id="helpBtn"> Help? </div>
+    </header>
+    <main>
+        <section id="garden"> 
+            <div class="plot" id="plot0">
+                <img class="plot-image" id="plotImage0">
+                <div class="plot-name" id="plotName0"></div>
+                <div class="plot-stats">
+                    💧 <span id="plotWater0">0</span>
+                    🌿 <span id="plotNutrients0">0</span>
+                    😊 <span id="plotHappiness0">0</span>
+                </div>
+            </div>
+
+            <div class="plot" id="plot1">
+                <img class="plot-image" id="plotImage1">
+                <div class="plot-name" id="plotName1"></div>
+                <div class="plot-stats">
+                    💧 <span id="plotWater1">0</span>
+                    🌿 <span id="plotNutrients1">0</span>
+                    😊 <span id="plotHappiness1">0</span>
+                </div>
+            </div>
+
+            <div class="plot" id="plot2">
+                <img class="plot-image" id="plotImage2">
+                <div class="plot-name" id="plotName2"></div>
+                <div class="plot-stats">
+                    💧 <span id="plotWater2">0</span>
+                    🌿 <span id="plotNutrients2">0</span>
+                    😊 <span id="plotHappiness2">0</span>
+                </div>
+            </div>
+
+            <div class="plot" id="plot3">
+                <img class="plot-image" id="plotImage3">
+                <div class="plot-name" id="plotName3"></div>
+                <div class="plot-stats">
+                    💧 <span id="plotWater3">0</span>
+                    🌿 <span id="plotNutrients3">0</span>
+                    😊 <span id="plotHappiness3">0</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="plant-panel">
+            <h2 id="plantName">Sunflower</h2>
+            <img id="plantImage" src="images/seed.jpeg"></p>
+            <p>Stage: <span id="stage">Seed</span></p>
+            <p>Water: 💧<span id="water">80</span>%</p>
+            <p>Nutrients: 🌿<span id="nutrients">70</span>%</p>
+            <p>Happiness: 😊 <span id="happiness">90</span>%</p>
+        </section>
+
+        <section id="controls">
+            <div id="action-buttons">
+                <button id="waterBtn"> 💧 Water Plant </button>
+                <button id="fertBtn">🌿 Fertilize Plant</button>
+                <button id="harvestBtn">🧺 Harvest </button>
+            </div>
+
+            <div id="seed-shop">
+                <h3>🌱 Seed Shop</h3>
+                <button id="sunflower">🌻 Sunflower — Free</button>
+                <button id="cactus">🌵 Cactus — 15 🪙</button>
+                <button id="tulip">🌷 Tulip — 30 🪙 </button>
+                <button id="rose">🌹 Rose — 50 🪙</button>
+                <button id="hyacinth">🪻 Hyacinth — 80 🪙</button>
+                <button id="lily">🌸 Lily — 100 🪙</button>
+                <button id="hibiscus">🌺 Hibiscus - 150 🪙</button>
+
+                
+            </div>
+
+            <div id="upgrades">
+                <h3>🍂 Garden Upgrades</h3>
+                <button id="hoseUpgrade"> 💧 Garden Hose (0/4) — 100 🪙</button>
+                <button id="compostUpgrade"> 🌿Compost Box (0/4)— 100 🪙</button>
+            </div>
+            <div id="achievements">
+                <h3>🏆 Achievements <span id="achievementCount"></span></h3>
+                <div class="achievement" id="firstPlant">
+                    <div class="achievement-icon">🌱</div>
+                    <div class="achievement-info">
+                        <strong>First Seed</strong>
+                        <span>Plant your first seed</span>
+                    </div>
+                </div>
+
+                    <div class="achievement" id="firstHarvest">
+                        <div class="achievement-icon">🌻</div>
+
+                        <div class="achievement-info">
+                            <strong>First Harvest</strong>
+                            <span>Harvest your first plant</span>
+                        </div>
+                    </div>
+
+
+                    <div class="achievement" id="plantCollector">
+                        <div class="achievement-icon">🌿</div>
+
+                        <div class="achievement-info">
+                            <strong>Plant Collector</strong>
+                            <span>Grow 5 different plants</span>
+                        </div>
+                    </div>
+
+
+                    <div class="achievement" id="littleGardener">
+                        <div class="achievement-icon">🪙</div>
+
+                        <div class="achievement-info">
+                            <strong>Little Gardener</strong>
+                            <span>Earn 100 coins</span>
+                        </div>
+                    </div>
+
+
+                    <div class="achievement" id="plantExpert">
+                        <div class="achievement-icon">🌸</div>
+
+                        <div class="achievement-info">
+                            <strong>Plant Expert</strong>
+                            <span>Grow every kind of plant</span>
+                        </div>
+                    </div>
+
+
+                    <div class="achievement" id="masterGardener">
+                        <div class="achievement-icon">🌳</div>
+
+                        <div class="achievement-info">
+                            <strong>Master Gardener</strong>
+                            <span>Harvest 25 plants</span>
+                        </div>
+                    </div>
+
+
+                    <div class="achievement" id="gardenGuardian">
+                        <div class="achievement-icon">🏡</div>
+
+                        <div class="achievement-info">
+                            <strong>Garden Guardian</strong>
+                            <span>Have all 4 plots mature at once</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="gardenTips">
+                    <h3>💡 Gardening Tips</h3>
+                    <p id="tipText"> Sunflowers are a great starter plant!</p>
+                </div>
+
+                <div id="helpModal" class="modal">
+                    <div class="modal-content">
+                    <span id="closeHelp">&times;</span>
+                    <h2>🌱 Garden Guardian Help</h2>
+                    <p> <strong>Goal:</strong> Grow plants, harvest them, earn coins, and unlock achievements. </p>
+                    <p>🪴 Plant seeds in empty plots using the Seed Shop.</p>
+                    <p>💧 Water plants to increase water.</p>
+                    <p>🌿 Fertilize plants to increase nutrients.</p>
+                    <p>🌻 Plants grow through: Seed → Sprout → Young → Mature</p>
+                    <p>🧺 Harvest mature plants for coins.</p>
+                    <p>💧 Garden Hoses automatically water plots.</p>
+                    <p>🌿 Compost Boxes automatically add nutrients.</p>
+                    <p>🏆 Unlock achievements and become the ultimate Garden Guardian!</p>
+
+                    </div>
+                </div>
+
+            <div id="winScreen" class="win-screen">
+                <div class="win-box">
+                    <div class="win-icon">🏆</div>
+                    <h1>Garden Complete!</h1>
+                    <p class="win-message">  You've fully equipped every plot! </p>
+                    <div class="win-stats">
+                        <div class="win-stat"><span>⏱️</span>
+                            <div>
+                                <small>Time Elapsed</small> <strong id="finalTime">0:00</strong>
+                            </div>
+                        </div>
+                        <div class="win-stat">
+                            <span>🌱</span>
+                            <div>
+                                <small>Plants Grown</small> <strong id="finalPlants">0</strong>
+                            </div>
+                        </div>
+
+                        <div class="win-stat"> <span>🌻</span>
+                            <div>
+                                <small>Plants Harvested</small><strong id="finalHarvests">0</strong>
+                            </div>
+                        </div>
+
+                        <div class="win-stat"><span>🌿</span>
+                            <div>
+                                <small>Garden Equipment</small>
+                                <strong>4 / 4 Plots</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="win-buttons">
+                        <button id="continueBtn">Continue</button>
+                        <button id="playAgainBtn">Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>

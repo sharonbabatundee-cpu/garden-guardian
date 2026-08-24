@@ -1,0 +1,421 @@
+/* ==========================================================
+   Garden Guardian – "cozy wood & parchment" theme
+   Matches the mockup: warm wood background, cream/parchment
+   panels with thick brown borders, rounded corners, soft
+   drop shadows, green "game" buttons, chunky rounded font.
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap');
+
+:root {
+    --wood-dark: #7a4a2b;
+    --wood-mid: #9c6b3e;
+    --wood-light: #b98552;
+
+    --parchment: #f4e6c8;
+    --parchment-light: #fbf1da;
+    --parchment-border: #8a5a30;
+    --parchment-border-light: #c9924f;
+
+    --ink: #4a3520;
+    --ink-soft: #6b4f30;
+
+    --green: #6fae4f;
+    --green-dark: #4c8a34;
+    --green-darker: #3a6d27;
+
+    --gold: #e0a63a;
+    --blue: #4a90d9;
+    --pink: #e07a9e;
+
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+
+    --shadow-panel: 0 6px 14px rgba(40, 24, 10, 0.35), inset 0 0 0 2px rgba(255, 240, 210, 0.25);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: 'Baloo 2', 'Comic Sans MS', system-ui, sans-serif;
+    color: var(--ink);
+    height: 100vh;
+    background:
+        radial-gradient(ellipse at top left, rgba(255, 255, 255, 0.06), transparent 60%),
+        repeating-linear-gradient(
+            90deg,
+            var(--wood-mid) 0px,
+            var(--wood-light) 18px,
+            var(--wood-mid) 36px
+        );
+    background-color: var(--wood-dark);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ---------- Header / title bar ---------- */
+
+header {
+    width: 100%;
+    max-width: 1100px;
+    flex: 0 0 auto;
+    background: linear-gradient(180deg, #3a3a3a, #262626);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    padding: 8px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-panel);
+    position: relative;
+}
+
+header::before {
+    /* traffic-light window dots, like the mockup title bar */
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 12px;
+    background-image:
+        radial-gradient(circle, #ff5f57 5px, transparent 6px),
+        radial-gradient(circle, #febc2e 5px, transparent 6px),
+        radial-gradient(circle, #28c840 5px, transparent 6px);
+    background-position: 0 0, 17px 0, 34px 0;
+    background-repeat: no-repeat;
+}
+
+header h1 {
+    margin: 0 0 0 60px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #f4e6c8;
+    letter-spacing: 0.5px;
+}
+
+#playerinfo {
+    background: linear-gradient(180deg, var(--parchment-light), var(--parchment));
+    border: 2px solid var(--parchment-border-light);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-weight: 700;
+    color: var(--ink);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+#playerinfo #coins {
+    color: var(--gold);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- Main layout ---------- */
+
+main {
+    width: 100%;
+    max-width: 1100px;
+    flex: 1 1 auto;
+    min-height: 0;
+    background: var(--wood-dark);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-panel);
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas:
+        "garden panel"
+        "garden actions"
+        "shop   shop";
+    gap: 14px;
+}
+
+/* #controls itself doesn't render as a box — its two children become
+   independent grid items of <main>, so the action buttons can sit
+   right next to the plots/stats while the seed shop sits below. */
+#controls {
+    display: contents;
+}
+
+/* Shared "parchment card" look for every panel */
+#garden,
+#plant-panel,
+#action-buttons,
+#seed-shop {
+    background: linear-gradient(180deg, var(--parchment-light), var(--parchment));
+    border: 3px solid var(--parchment-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+    padding: 14px;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* ---------- Garden plots ---------- */
+
+#garden {
+    grid-area: garden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: min-content;
+    gap: 10px;
+    align-content: start;
+    position: relative;
+}
+
+#garden::before {
+    content: "🌻 GARDEN PLOTS";
+    grid-column: 1 / -1;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--ink-soft);
+    background: var(--parchment-border);
+    color: var(--parchment-light);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin: -6px auto 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.plot {
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.15), transparent 60%),
+        linear-gradient(180deg, #7a4f2e, #5a3a20);
+    border: 3px solid #4a2f18;
+    border-radius: var(--radius-md);
+    padding: 12px 10px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    box-shadow: inset 0 0 0 2px rgba(255, 220, 170, 0.15), 0 3px 6px rgba(0, 0, 0, 0.35);
+}
+
+.plot:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.plot-image {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
+    border-radius: 50%;
+    padding: 6px;
+    display: block;
+    margin: 0 auto 6px;
+}
+
+.plot-name {
+    font-weight: 700;
+    color: var(--parchment-light);
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 999px;
+    padding: 3px 10px;
+    display: inline-block;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.plot-stats {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffe9c2;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* ---------- Plant detail panel ---------- */
+
+#plant-panel {
+    grid-area: panel;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+#plant-panel h2 {
+    margin: 0 0 6px;
+    background: var(--parchment-border);
+    color: var(--parchment-light);
+    padding: 6px 20px;
+    border-radius: 999px;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+#plantImage {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    background: radial-gradient(circle, #eaf6d8, #d9ecc0 70%);
+    border: 3px solid var(--green-dark);
+    border-radius: 50%;
+    padding: 8px;
+    margin: 2px 0 8px;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5), 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+#plant-panel p {
+    width: 100%;
+    max-width: 220px;
+    margin: 3px 0;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--parchment-border-light);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    color: var(--ink);
+}
+
+#plant-panel p span {
+    font-weight: 800;
+    color: var(--green-darker);
+}
+
+/* ---------- Controls / shop ---------- */
+/* #controls is display:contents (see above), so its two children act
+   as independent panels placed directly on the <main> grid. */
+
+#action-buttons {
+    grid-area: actions;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+}
+
+#seed-shop {
+    grid-area: shop;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+#seed-shop h3 {
+    margin: 0 10px 0 0;
+    background: var(--parchment-border);
+    color: var(--parchment-light);
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 999px;
+    font-size: 1rem;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+#seed-shop button {
+    flex: 1 1 auto;
+}
+
+/* Buttons – rounded, chunky, green "PURCHASE" style with 3D press effect */
+
+button {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+    background: linear-gradient(180deg, var(--green), var(--green-dark));
+    border: none;
+    border-bottom: 4px solid var(--green-darker);
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    cursor: pointer;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+    transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.15s ease;
+}
+
+button:hover {
+    filter: brightness(1.08);
+}
+
+button:active {
+    transform: translateY(3px);
+    border-bottom-width: 1px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+#waterBtn {
+    background: linear-gradient(180deg, #6cb6e8, var(--blue));
+    border-bottom-color: #2f6aa8;
+}
+
+#fertBtn {
+    background: linear-gradient(180deg, #b98a4f, #8a5f2e);
+    border-bottom-color: #5f3f1c;
+}
+
+#harvestBtn {
+    background: linear-gradient(180deg, var(--gold), #c4831f);
+    border-bottom-color: #8c5c12;
+}
+
+#seed-shop button {
+    text-align: left;
+    background: linear-gradient(180deg, var(--parchment-light), #e8d3a3);
+    color: var(--ink);
+    text-shadow: none;
+    border: 2px solid var(--parchment-border-light);
+    border-bottom: 4px solid var(--parchment-border);
+}
+
+#seed-shop button:active {
+    border-bottom-width: 2px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 720px) {
+    html, body {
+        overflow: auto;
+    }
+
+    body {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "garden"
+            "panel"
+            "actions"
+            "shop";
+        overflow-y: auto;
+    }
+
+    #seed-shop {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    header h1 {
+        font-size: 1.1rem;
+        margin-left: 50px;
+    }
+}
